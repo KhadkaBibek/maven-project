@@ -158,6 +158,19 @@
           <artifactId>jetty-maven-plugin</artifactId>
           <version>8.0.0.M1</version>
         </plugin>
+        <plugin>
+      <groupId>org.jacoco</groupId>
+      <artifactId>jacoco-maven-plugin</artifactId>
+      <version>0.8.8</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>prepare-agent</goal> <!-- Prepare JaCoCo agent before tests -->
+            <goal>report</goal> <!-- Generate the report after tests -->
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
       </plugins>
     </pluginManagement>
   </build>
