@@ -1,6 +1,6 @@
 pipeline{
    agent {
-    label = 'master_agent'
+    label 'master_agent'
    }
 environment {
     NAME = 'Bibek'
