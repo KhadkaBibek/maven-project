@@ -22,7 +22,7 @@ parameters {
                     echo 'This is test A'
                 }
             }
-            stage(testB){
+            stage('testB'){
                 steps{
                     echo 'This is test B'
             }
