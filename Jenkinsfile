@@ -23,9 +23,9 @@ parameters {
                 }
             }
             stage(testB){
-                steps(
+                steps{
                     echo 'This is test B'
-                )
+            }
             }
         }
     }
