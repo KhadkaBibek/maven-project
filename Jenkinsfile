@@ -6,12 +6,13 @@ environment {
     NAME = 'Bibek'
 }  
 parameters {
-    choice choices:['dev','prod'], name:'select_environment'
+    choice choices:['master','agent'], name:'select_environment'
 } 
     stages{
         stage('build'){
             steps{
             sh 'mvn clean package -DskipTests=true'
+            echo "hello $NAME ${params.select_environment}"
            
         }}
     
