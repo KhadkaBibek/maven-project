@@ -1,31 +1,37 @@
 pipeline{
-    agent {
-        label 'server1'
-    }
+   
 environment {
     NAME = 'Bibek'
 }  
 parameters {
-    string defaultValue:'Khadka' , name : 'LASTNAME'
+    choice choices:['dev','prod'], name:'select_environment'
 } 
     stages{
         stage('build'){
             steps{
-            sh 'mvn clean package'
-            echo "hello $NAME ${params.LASTNAME}"
+            sh 'mvn clean package -DskipTests=true'
+           
         }}
     
     stage('test'){
         parallel{
             stage('testA'){
+                agent{
+                    label 'master_agent'
+                }
                 steps{
                     echo 'This is test A'
+                    sh 'mvn test'
                 }
             }
             stage('testB')
             {
+                agent{
+                    label 'master_agent'
+                }
                 steps{
                     echo 'This is test B'
+                    sh 'mvn test'
             }
             }
         }
