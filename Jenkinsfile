@@ -45,6 +45,27 @@ pipeline {
                     }
                 }
             }
+       
+     }
+     stage('master_deploy'){
+        when { expression {params.select_environment == 'master'}
+        beforeAgent true}
+        agent {
+            label 'master_agent'
         }
+        steps{
+            dir("/var/www/html")
+            {
+                unstash "master-maven-build"
+            }
+            sh """
+            cs /var/www/html/
+            jar -xvf webapp.war
+            """
+        }
+     }
+
+
+     
     }
 }
