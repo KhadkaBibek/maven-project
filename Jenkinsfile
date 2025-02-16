@@ -59,13 +59,13 @@ pipeline {
                 unstash "master-maven-build"
             }
             sh """
-            cs /var/www/html/
+            cd /var/www/html/
             jar -xvf webapp.war
             """
         }
      }
 
 
-     
+
     }
 }
